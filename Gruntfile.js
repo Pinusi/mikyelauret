@@ -48,7 +48,7 @@ module.exports = function(grunt) {
               '<%= cartelle.distribution %>/{,*/}*.html',
               '<%= cartelle.distribution %>/styles/{,*/}*.css',
               '<%= cartelle.distribution %>/scripts/{,*/}*.js',
-              '<%= cartelle.distribution %>/images/{,*/}*.{gif,jpeg,jpg,png,svg,webp}'
+              '<%= cartelle.distribution %>/imgs/{,*/}*.{gif,jpeg,jpg,png,svg,webp}'
           ]
       }
     },
@@ -177,12 +177,12 @@ module.exports = function(grunt) {
     'ftp-deploy': {
         build: {
           auth: {
-            host: '23.229.173.40',
+            host: 'ftp.lauretmichele.it',
             port: 21,
             authKey: 'key1'
           },
           src: '<%= cartelle.distribution %>',
-          dest: 'public_html/test'
+          dest: 'htdocs'
         }
     },
 
@@ -226,13 +226,8 @@ module.exports = function(grunt) {
     'watch'
     ]);
 
-  grunt.registerTask('ftp-test', [
-    'build',
-    'ftp-deploy'
-    ]);
-
   grunt.registerTask('ftp-prod', [
     'build',
-    'ftp:production'
+    'ftp-deploy'
     ]);
 };
